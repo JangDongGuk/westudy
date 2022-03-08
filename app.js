@@ -6,14 +6,17 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
+const dotenv = require('dotenv');
+
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+dotenv.config();
+
 const app = express();
 
-// 시퀄라이즈
-const { sequelize } = require('./models/index'); 
-
 // 라우팅
-const home = require('./routes/home');
 const { Server } = require('http');
+const { sequelize } = require('./models/index'); //시퀄라이즈
 
 //서버 실행시 MYSQL과 연결
 sequelize.sync({ force: false }) // 서버 실행시마다 테이블을 재생성 할 건지에 대한 여부
@@ -25,11 +28,11 @@ sequelize.sync({ force: false }) // 서버 실행시마다 테이블을 재생�
   });
 
 // view engine setup
-app.set('views', './views');
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 
-//use > 미들 웨어를 등록해주는 메서드
+//use > 미들 웨어를 등록해주는 메서드  - - -미들웨어 밑에 http메서드를 (app.get 같은것들을) 적는게 순서다 .
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -37,7 +40,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-app.use('/', home);
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
 
 
 // catch 404 and forward to error handler
@@ -57,4 +61,7 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+
+//위치 살펴보기
 
