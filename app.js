@@ -10,6 +10,8 @@ const dotenv = require('dotenv');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const signupRoter = require('./routes/signup');
+
 dotenv.config();
 
 const app = express();
@@ -19,9 +21,9 @@ const { Server } = require('http');
 const { sequelize } = require('./models/index'); //시퀄라이즈
 
 //서버 실행시 MYSQL과 연결
-sequelize.sync({ force: false }) // 서버 실행시마다 테이블을 재생성 할 건지에 대한 여부
+ sequelize.sync({ force: false }) // 서버 실행시마다 테이블을 재생성 할 건지에 대한 여부
   .then(() => {
-    console.log('서버가동');
+    console.log(' DB 연결성공');
   })
   .catch((err) => {
     console.error(err);
@@ -42,6 +44,7 @@ app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/signup', signupRoter);
 
 
 // catch 404 and forward to error handler
