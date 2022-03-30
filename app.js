@@ -7,10 +7,14 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const redis = require('redis');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const signupRoter = require('./routes/signup');
+const signupRouter = require('./routes/signup');
+const jwtRouter = require('./routes/jwt');
+
+
 
 dotenv.config();
 
@@ -44,7 +48,9 @@ app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/signup', signupRoter);
+app.use('/signup', signupRouter);
+app.use('/jwt', jwtRouter);
+
 
 
 // catch 404 and forward to error handler

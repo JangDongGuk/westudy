@@ -11,7 +11,7 @@ class User extends Sequelize.Model {
               type: Sequelize.STRING(20)
           },
           user_password:{
-              type: Sequelize.CHAR(200)
+              type: Sequelize.CHAR(60)
           },
           user_email:{
               type: Sequelize.STRING(20)
