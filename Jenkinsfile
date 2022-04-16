@@ -14,13 +14,13 @@ pipeline {
     
         stage('Checkout') {
             steps {
-                git branch: 'featrue/*',
+                git branch: '*/featrue',
                     credentialsId: 'github_access_token',
                     url: 'https://github.com/JangDongGuk/westudy.git'
             }
         }
     }
-    
+
     post {
         success {
             slackSend (channel: SLACK_CHANNEL, color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
