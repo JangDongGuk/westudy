@@ -14,7 +14,7 @@ pipeline {
     
         stage('Checkout') {
             steps {
-                git branch: 'feature/*',
+                git branch: 'feature/signin.up',
                     credentialsId: 'github_access_token',
                     url: 'https://github.com/JangDongGuk/westudy.git'
             }
