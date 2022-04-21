@@ -30,7 +30,6 @@ pipeline {
                     sh "npm run asd"
                     } catch(err) {
                     echo "Caught: ${err}"
-                    console.log(err.message)
                     }
                 }
             }
