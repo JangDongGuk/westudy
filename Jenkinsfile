@@ -20,6 +20,16 @@ pipeline {
             }
         }
     }
+
+    stages {
+        stage('build') {
+            steps {
+                echo "jenkins building..."
+                sh "npm install"
+                sh "npm run build"
+            }
+        }
+    }
     
     post {
         success {
