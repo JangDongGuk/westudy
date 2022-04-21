@@ -25,7 +25,7 @@ pipeline {
             steps {
                 echo "jenkins building..."
                 sh "npm install"
-                sh "npm run build"
+                sh "npm run"
             }
         }
     }
