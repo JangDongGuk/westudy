@@ -29,7 +29,7 @@ pipeline {
                     sh "npm install"
                     sh "npm run build"
                     } catch(err) {
-                        console.log(err)
+                    echo "Caught: ${err}"
                     }
                 }
             }
