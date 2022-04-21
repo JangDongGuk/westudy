@@ -27,12 +27,18 @@ pipeline {
                     try{
                     echo "jenkins building..."
                     sh "npm install"
-                    sh "npm run"
+                    sh "npm run asde"
                     } catch(err) {
                     echo "Caught: ${err}"
                     console.log(err.message)
                     }
                 }
+            }
+        }
+
+        stage('test') {
+            steps {
+                echo "test"
             }
         }
     }
