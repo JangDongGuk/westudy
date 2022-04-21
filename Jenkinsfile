@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    tools {nodejs "nodejs"}
     
     environment {
         SLACK_CHANNEL = '#jenkins'
@@ -23,6 +24,7 @@ pipeline {
         stage('build') {
             steps {
                 echo "jenkins building..."
+                sh "npm install"
                 sh "npm run build"
             }
         }
