@@ -6,7 +6,7 @@ pipeline {
         SLACK_CHANNEL = '#jenkins'
     }
 
-    stages {
+    node {
         stage('Start') {
             steps {
                 slackSend (channel: SLACK_CHANNEL , color: '#FFFFOO', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
