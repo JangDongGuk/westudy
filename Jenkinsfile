@@ -23,8 +23,6 @@ pipeline {
         stage('build') {
             steps {
                 echo "jenkins building..."
-                sh "cd /var/lib/jenkins/workspace/multi_branch_pipeline_main"
-                sh "npm install"
                 sh "npm run build"
             }
         }
