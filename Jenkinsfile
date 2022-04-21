@@ -28,7 +28,7 @@ pipeline {
                 sh "npm install"
                 sh "npm run"
                 } catch(err)
-                echo "building false"
+                console.log(err)
             }
         }
     }
