@@ -27,7 +27,9 @@ pipeline {
                 echo "jenkins building..."
                 sh "npm install"
                 sh "npm run"
-                } catch(err)
+                } catch(err) {
+                    console.log(err)
+                }
             }
         }
     }
