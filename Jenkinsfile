@@ -23,18 +23,15 @@ pipeline {
 
         stage('build') {
             steps {
-                catchError {
-                   echo "jenkins building..."
+                script{
+                    try{
+                    echo "jenkins building..."
                     sh "npm install"
-                    sh "npm run asd" 
-                }
-            }
-            post {
-                success {
-                    echo 'Compile stage successful'
-                }
-                failure {
-                    echo 'Compile stage failed'
+                    sh "npm run"
+                    } catch(err) {
+                    echo "Caught: ${err}"
+                    console.log(err.message)
+                    }
                 }
             }
         }
