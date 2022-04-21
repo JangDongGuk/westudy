@@ -26,7 +26,7 @@ pipeline {
                 catchError {
                    echo "jenkins building..."
                     sh "npm install"
-                    sh "npm run asd" 
+                    sh "npm run" 
                 }
             }
             post {
