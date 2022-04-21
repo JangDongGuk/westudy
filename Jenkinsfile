@@ -28,8 +28,8 @@ pipeline {
                     echo "jenkins building..."
                     sh "npm install"
                     sh "npm run build"
-                    } catch(err) {
-                    echo err.getMessage()
+                    } catch(Exception e) {
+                    echo 'Exception occurred: ' + e.toString()
                     }
                 }
             }
