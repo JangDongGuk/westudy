@@ -28,7 +28,6 @@ pipeline {
                 sh "npm install"
                 sh "npm run"
                 } catch(err)
-                console.log(err)
             }
         }
     }
