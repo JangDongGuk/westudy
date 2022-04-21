@@ -6,7 +6,7 @@ pipeline {
         SLACK_CHANNEL = '#jenkins'
     }
 
-    node {
+    stages {
         stage('Start') {
             steps {
                 slackSend (channel: SLACK_CHANNEL , color: '#FFFFOO', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
@@ -23,12 +23,14 @@ pipeline {
 
         stage('build') {
             steps {
-                try{
-                echo "jenkins building..."
-                sh "npm install"
-                sh "npm run"
-                } catch(err) {
-                    console.log(err)
+                script{
+                    try{
+                    echo "jenkins building..."
+                    sh "npm install"
+                    sh "npm run"
+                    } catch(err) {
+                        console.log(err)
+                    }
                 }
             }
         }
