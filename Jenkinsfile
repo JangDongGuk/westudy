@@ -26,7 +26,7 @@ pipeline {
                 catchError {
                    echo "jenkins building..."
                     sh "npm install"
-                    sh "npm run" 
+                    sh "npm run asd" 
                 }
             }
             post {
@@ -36,6 +36,11 @@ pipeline {
                 failure {
                     echo 'Compile stage failed'
                 }
+            }
+        }
+        stage('test') {
+            steps {
+                echo "test1"
             }
         }
     }
