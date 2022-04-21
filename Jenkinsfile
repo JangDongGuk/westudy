@@ -23,9 +23,12 @@ pipeline {
 
         stage('build') {
             steps {
+                try{
                 echo "jenkins building..."
                 sh "npm install"
                 sh "npm run"
+                } catch(err)
+                echo "building false"
             }
         }
     }
