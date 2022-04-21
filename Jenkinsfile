@@ -30,6 +30,7 @@ pipeline {
                     sh "npm run build"
                     } catch(err) {
                     echo "Caught: ${err}"
+                    console.log(err.message)
                     }
                 }
             }
