@@ -19,6 +19,9 @@ class User extends Sequelize.Model {
           user_phone:{
               type: Sequelize.STRING(20)
           },
+          user_salt:{
+              type: Sequelize.STRING(100)
+          }
         
       
         },
